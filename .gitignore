@@ -1,0 +1,36 @@
+# Build outputs
+bin/
+obj/
+build/
+*.pdb
+*.exe
+
+# Game reference DLLs (copy from game installation)
+libs/
+
+# Reference mods and log files (never commit)
+References/
+BasSDK/
+BasSDK.zip
+_agent/verification_results.md
+
+# IDE
+.vs/
+.vscode/
+*.user
+*.suo
+*.userprefs
+
+# NuGet
+packages/
+*.nupkg
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Rider
+.idea/
+
+# Release zips
+*.zip

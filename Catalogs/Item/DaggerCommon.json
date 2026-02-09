@@ -1,0 +1,18 @@
+{
+  "$type": "ThunderRoad.ItemData, ThunderRoad",
+  "id": "DaggerCommon",
+  "version": 4,
+  "modules": [
+    {
+      "$type": "InfiniteImbueFramework.ItemModuleInfiniteImbue, InfiniteImbueFramework",
+      "schemaVersion": 1,
+      "spells": [
+        { "spellId": "Fire", "level": 1.0 }
+      ],
+      "assignmentMode": "ByImbueIndex",
+      "applyOnSpawn": true,
+      "keepFilled": true,
+      "updateInterval": 0.2
+    }
+  ]
+}

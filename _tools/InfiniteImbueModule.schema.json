@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/infinite-imbue-module.schema.json",
+  "title": "InfiniteImbueFramework ItemModule schemaVersion 1",
+  "type": "object",
+  "required": [
+    "$type",
+    "spells"
+  ],
+  "properties": {
+    "$type": {
+      "type": "string",
+      "const": "InfiniteImbueFramework.ItemModuleInfiniteImbue, InfiniteImbueFramework"
+    },
+    "schemaVersion": {
+      "type": "integer",
+      "const": 1
+    },
+    "spells": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "spellId"
+        ],
+        "properties": {
+          "spellId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "level": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "energy": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "assignmentMode": {
+      "type": "string",
+      "enum": [
+        "ByImbueIndex",
+        "Cycle",
+        "FirstOnly",
+        "RandomPerSpawn",
+        "RoundRobinPerSpawn",
+        "ConditionalHandVelocity"
+      ]
+    },
+    "conflictPolicy": {
+      "type": "string",
+      "enum": [
+        "ForceConfiguredSpell",
+        "RespectExternalSpell",
+        "RespectExternalSpellNoEnergyWrite"
+      ]
+    },
+    "applyOnSpawn": {
+      "type": "boolean"
+    },
+    "keepFilled": {
+      "type": "boolean"
+    },
+    "updateInterval": {
+      "type": "number",
+      "minimum": 0
+    },
+    "maintainBelowRatio": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "refillToRatio": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "minSetEnergyInterval": {
+      "type": "number",
+      "minimum": 0
+    },
+    "conditionalVelocityThreshold": {
+      "type": "number",
+      "minimum": 0
+    },
+    "conditionalVelocityHysteresis": {
+      "type": "number",
+      "minimum": 0
+    },
+    "conditionalMinSwitchInterval": {
+      "type": "number",
+      "minimum": 0
+    },
+    "debugLogging": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": true
+}

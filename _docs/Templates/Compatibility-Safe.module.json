@@ -1,0 +1,18 @@
+{
+  "$type": "InfiniteImbueFramework.ItemModuleInfiniteImbue, InfiniteImbueFramework",
+  "schemaVersion": 1,
+  "spells": [
+    { "spellId": "Fire", "level": 1.0 }
+  ],
+  "assignmentMode": "ByImbueIndex",
+  "conflictPolicy": "RespectExternalSpell",
+  "applyOnSpawn": true,
+  "keepFilled": true,
+  "updateInterval": 0.25,
+  "maintainBelowRatio": 0.95,
+  "refillToRatio": 1.0,
+  "minSetEnergyInterval": 0.6,
+  "conditionalVelocityThreshold": 6.0,
+  "conditionalVelocityHysteresis": 1.0,
+  "conditionalMinSwitchInterval": 0.25
+}

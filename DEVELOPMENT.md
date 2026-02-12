@@ -1,7 +1,7 @@
 # Development Notes
 
 - Target framework: net472.
-- Builds output to bin/Release/PCVR/InfiniteImbueFramework/ and bin/Release/Nomad/InfiniteImbueFramework/.
+- Builds output to `bin/PCVR/InfiniteImbueFramework/` and `bin/Nomad/InfiniteImbueFramework/`.
 - References are loaded from ..\libs.
 - Core entry point: ItemModuleInfiniteImbue attaches InfiniteImbueBehaviour at runtime.
 - Spell IDs must match SpellCastCharge IDs present in the catalog.

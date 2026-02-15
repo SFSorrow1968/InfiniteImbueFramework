@@ -61,6 +61,9 @@ Goal: Strict, safe, and reproducible process for Windows PowerShell 5.1.
 
 ## 6. Release
 1.  **GitHub Release**: Create a release targeting tag `v<VERSION>`. Upload both zips.
+    ```powershell
+    gh release create v<VERSION> InfiniteImbueFramework_PCVR_v<VERSION>.zip InfiniteImbueFramework_Nomad_v<VERSION>.zip --title "v<VERSION>" --notes "See manifest.json for details."
+    ```
 2.  **Nexus Mods**: Upload files.
     - **Generate Descriptions**: Refer to `_docs/nexus_description_guidelines.md`.
         - **Brief Description**: (See guidelines)

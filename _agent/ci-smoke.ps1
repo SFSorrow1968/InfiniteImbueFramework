@@ -6,13 +6,23 @@ $ErrorActionPreference = "Stop"
 
 $repoRoot = Resolve-Path (Join-Path $PSScriptRoot "..")
 $repoRootPath = $repoRoot.Path
+
+Write-Host "[CI] Script Root: $PSScriptRoot"
+Write-Host "[CI] Repo Root: $repoRootPath"
+
 # Dynamically find the main project file
-$projectFile = Get-ChildItem -Path $repoRootPath -Filter "*.csproj" -Exclude "*.Tests.csproj" | Select-Object -First 1
+# Get all csproj files first, then filter in memory to be safer
+$allProjects = Get-ChildItem -Path $repoRootPath -Filter "*.csproj"
+$projectFile = $allProjects | Where-Object { $_.Name -notlike "*.Tests.csproj" } | Select-Object -First 1
+
 if (-not $projectFile) {
     Write-Error "Could not find main .csproj file in $repoRootPath"
+    Write-Host "Contents of $repoRootPath :"
+    Get-ChildItem -Path $repoRootPath | Select-Object Name, Length, Mode | Format-Table | Out-Host
     exit 1
 }
 $projectPath = $projectFile.FullName
+Write-Host "[CI] Found Project: $projectPath"
 
 # Dynamically find the test project file
 $testProjectFile = Get-ChildItem -Path $repoRootPath -Recurse -Filter "*.Tests.csproj" | Select-Object -First 1

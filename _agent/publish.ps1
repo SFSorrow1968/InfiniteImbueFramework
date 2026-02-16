@@ -12,7 +12,7 @@ Set-Location "$PSScriptRoot/.."
 # 1. Safety Checks
 if (Test-Path ".git") {
     Write-Host "1. Checking Git Status..." -ForegroundColor Cyan
-    $status = git status --porcelain
+    $status = git status --porcelain -untracked-files=no
     if ($status) {
         Write-Error "Working tree is dirty. Please commit or stash changes first."
     }

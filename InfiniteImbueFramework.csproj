@@ -1,67 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
     <AssemblyName>InfiniteImbueFramework</AssemblyName>
     <RootNamespace>InfiniteImbueFramework</RootNamespace>
-    <LangVersion>latest</LangVersion>
-    <Nullable>disable</Nullable>
-    <OutputPath>bin\$(Configuration)\</OutputPath>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Configurations>Debug;Release;Nomad</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Include="**\*.cs" Exclude="BasSDK\**;References\**;obj\**;bin\**;builds\**;*.Tests\**" />
   </ItemGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebugType>portable</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>bin\Release\PCVR\InfiniteImbueFramework\</OutputPath>
-    <DebugType>none</DebugType>
-    <DebugSymbols>false</DebugSymbols>
-    <Optimize>true</Optimize>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Nomad|AnyCPU'">
-    <OutputPath>bin\Release\Nomad\InfiniteImbueFramework\</OutputPath>
-    <DebugType>none</DebugType>
-    <DebugSymbols>false</DebugSymbols>
-    <Optimize>true</Optimize>
-    <DefineConstants>NOMAD</DefineConstants>
-  </PropertyGroup>
-
   <ItemGroup>
-    <Reference Include="ThunderRoad">
-      <HintPath>..\..\SDK\libs\ThunderRoad.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\SDK\libs\Assembly-CSharp.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\..\SDK\libs\Assembly-CSharp-firstpass.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\SDK\libs\UnityEngine.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\SDK\libs\UnityEngine.CoreModule.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>..\..\SDK\libs\UnityEngine.IMGUIModule.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
       <HintPath>..\..\SDK\libs\UnityEngine.TextRenderingModule.dll</HintPath>
       <Private>false</Private>

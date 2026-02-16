@@ -1,0 +1,18 @@
+# Modding Workflow (Human Guide)
+
+This project uses a "Router-based" agent workflow to keep context clean.
+
+1. **Main Instructions (The Router)**
+   - File: `AGENTS.md` (synced to `GEMINI.md`/`CLAUDE.md`)
+   - Role: Directs agents to the right place. Does not contain specific code details.
+
+2. **Secondary Instructions (The Context)**
+   - Locations: `_visions/*.md` and `_quirks/*.md`
+   - Role: Contains feature-specific architecture, logging rules, and edge cases.
+   - *Agents read these ONLY when working on that capability.*
+
+3. **Publishing**
+   - Script: `_agent/publish.ps1`
+   - Role: Automates building and zipping releases.
+
+*Maintained by agents for humans.*

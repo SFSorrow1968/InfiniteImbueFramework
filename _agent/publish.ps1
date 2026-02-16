@@ -10,10 +10,15 @@ $ErrorActionPreference = "Stop"
 Set-Location "$PSScriptRoot/.."
 
 # 1. Safety Checks
-Write-Host "1. Checking Git Status..." -ForegroundColor Cyan
-$status = git status --porcelain
-if ($status) {
-    Write-Error "Working tree is dirty. Please commit or stash changes first."
+if (Test-Path ".git") {
+    Write-Host "1. Checking Git Status..." -ForegroundColor Cyan
+    $status = git status --porcelain
+    if ($status) {
+        Write-Error "Working tree is dirty. Please commit or stash changes first."
+    }
+}
+else {
+    Write-Warning "Not a git repository. Skipping git safety check."
 }
 
 $branch = git branch --show-current

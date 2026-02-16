@@ -49,8 +49,8 @@ dotnet build -c Release
 dotnet build -c Nomad
 
 # Verify Build Artifacts
-if (-not (Test-Path "bin/PCVR/Infinite Imbue Framework/Infinite Imbue Framework.dll")) { Write-Error "PCVR Build Failed: DLL not found." }
-if (-not (Test-Path "bin/Nomad/Infinite Imbue Framework/Infinite Imbue Framework.dll")) { Write-Error "Nomad Build Failed: DLL not found." }
+if (-not (Test-Path "bin/PCVR/InfiniteImbueFramework/InfiniteImbueFramework.dll")) { Write-Error "PCVR Build Failed: DLL not found." }
+if (-not (Test-Path "bin/Nomad/InfiniteImbueFramework/InfiniteImbueFramework.dll")) { Write-Error "Nomad Build Failed: DLL not found." }
 
 # 4. Package
 Write-Host "4. Packaging..." -ForegroundColor Cyan
@@ -60,8 +60,8 @@ $nomadZip = "Infinite Imbue Framework_Nomad_v$version.zip"
 if (Test-Path $pcvrZip) { Remove-Item $pcvrZip }
 if (Test-Path $nomadZip) { Remove-Item $nomadZip }
 
-Compress-Archive -Path "bin/PCVR/Infinite Imbue Framework/*" -DestinationPath $pcvrZip
-Compress-Archive -Path "bin/Nomad/Infinite Imbue Framework/*" -DestinationPath $nomadZip
+Compress-Archive -Path "bin/PCVR/InfiniteImbueFramework/*" -DestinationPath $pcvrZip
+Compress-Archive -Path "bin/Nomad/InfiniteImbueFramework/*" -DestinationPath $nomadZip
 
 Write-Host "   Created $pcvrZip" -ForegroundColor Green
 Write-Host "   Created $nomadZip" -ForegroundColor Green

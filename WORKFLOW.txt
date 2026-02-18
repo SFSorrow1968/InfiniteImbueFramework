@@ -1,18 +1,38 @@
 # Modding Workflow (Human Guide)
 
-This project uses a "Router-based" agent workflow to keep context clean.
+This project uses a "Router-based" agent workflow to keep context clean and keep vibe loops short.
 
 1. **Main Instructions (The Router)**
    - File: `AGENTS.md` (synced to `GEMINI.md`/`CLAUDE.md`)
    - Role: Directs agents to the right place. Does not contain specific code details.
 
 2. **Secondary Instructions (The Context)**
-   - Locations: `_visions/*.md` and `_quirks/*.md`
-   - Role: Contains feature-specific architecture, logging rules, and edge cases.
-   - *Agents read these ONLY when working on that capability.*
+   - Locations: `_visions/*.md`, `_quirks/*.md`, `_resources/*.md`, and `SCRATCHPAD.md`
+   - Role: Contains feature-specific architecture, logging rules, edge cases, and session handoff state.
+   - Required gate: For every touched C# feature, update _visions/[Feature]_VISION.md, _quirks/[Feature]_QUIRKS.md, and _resources/[Feature]_RESOURCES.md, and log the review/update in SCRATCHPAD.md.
 
-3. **Publishing**
-   - Script: `_agent/publish.ps1`
+3. **Bootstrap Context (Safe to Re-run)**
+   - Script: `_agent/bootstrap-context.ps1`
+   - Role: Ensures `SCRATCHPAD.md`, `_visions/`, `_quirks/`, and `_resources/` exist.
+   - Optional: `_agent/bootstrap-context.ps1 -Feature "<FeatureName>"` creates companion docs for one feature.
+
+4. **Build + Test**
+   - Script: `_agent/test.ps1 -Strict`
+   - Role: Canonical local verification entrypoint. Wraps `_agent/ci-smoke.ps1`.
+
+5. **Publishing**
+   - Script: `_agent/publish.ps1 -Force`
    - Role: Automates building and zipping releases.
 
+6. **Git Snapshots (Required)**
+   - Script: `_agent/snapshot.ps1 -Message "snapshot: <topic>"`
+   - Source of truth: `_docs/GIT_WORKFLOW.md`
+   - Rule: For each successful build snapshot, create a new snapshot branch and new snapshot tag (immutable, never force-update old snapshot refs).
+
+7. **Workspace Router**
+   - From `BS/`, run: `./mod.ps1 "Infinite Imbue Framework" ship -Force`
+   - Role: Runs per-mod scripts from a single root command.
+
 *Maintained by agents for humans.*
+
+

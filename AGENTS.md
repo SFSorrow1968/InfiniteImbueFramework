@@ -1,4 +1,4 @@
-# Agent Instructions
+﻿# Agent Instructions
 
 ## 1. Central Planning (START HERE)
 
@@ -61,6 +61,10 @@ The following extensions are configured to assist you:
 - **No Teaching**: Do not explain "how" or offer lessons. Just implement the solution.
 - **Full Scope**: Handle all boilerplates, side-effects, and details effectively.
 - **Default Behavior**: Always `ShouldAutoProceed: true` unless proposed action is destructive/irreversible.
+- **Parallel Agents**: Assume modified/untracked files may come from another active agent in the same repo.
+- **Dirty Worktree Policy**: Do not halt solely because unexpected local changes exist.
+- **Collaboration Rule**: Inspect overlap, preserve others' edits, and layer your changes without reverting unrelated files.
+- **Escalation Rule**: Ask the user only when there is a true edit conflict or a destructive action is required.
 
 ## 6. Memory & Handoffs
 

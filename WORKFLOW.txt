@@ -1,4 +1,4 @@
-# Modding Workflow (Human Guide)
+﻿# Modding Workflow (Human Guide)
 
 This project uses a "Router-based" agent workflow to keep context clean and keep vibe loops short.
 
@@ -33,6 +33,12 @@ This project uses a "Router-based" agent workflow to keep context clean and keep
    - From `BS/`, run: `./mod.ps1 "Infinite Imbue Framework" ship -Force`
    - Role: Runs per-mod scripts from a single root command.
 
+
+8. **Parallel Agent Collaboration**
+   - Assume modified/untracked files may come from another active agent.
+   - Do not halt solely because the working tree is dirty.
+   - Preserve others' edits and avoid reverting unrelated files.
+   - Ask the user only when a true conflict requires a decision or a destructive operation.
 *Maintained by agents for humans.*
 
 

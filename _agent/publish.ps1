@@ -8,6 +8,19 @@ param(
 
 $ErrorActionPreference = "Stop"
 Set-Location "$PSScriptRoot/.."
+$projectPath = "InfiniteImbueFramework.csproj"
+
+function Invoke-DotNetOrThrow {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string[]]$Args
+    )
+
+    & dotnet @Args
+    if ($LASTEXITCODE -ne 0) {
+        throw "dotnet command failed: dotnet $($Args -join ' ')"
+    }
+}
 
 # 1. Safety Checks
 if (Test-Path ".git") {
@@ -32,7 +45,6 @@ $version = $manifest.ModVersion
 Write-Host "   Current Version: $version" -ForegroundColor Green
 
 # Ask for confirmation
-# Ask for confirmation
 if (-not $Force) {
     $confirmation = Read-Host "Proceed with publishing v$version? (y/n)"
     if ($confirmation -ne 'y') {
@@ -41,12 +53,11 @@ if (-not $Force) {
     }
 }
 
-
 # 3. Build
 Write-Host "3. Building..." -ForegroundColor Cyan
 Set-Location "$PSScriptRoot/.."
-dotnet build -c Release
-dotnet build -c Nomad
+Invoke-DotNetOrThrow -Args @("build", $projectPath, "-c", "Release")
+Invoke-DotNetOrThrow -Args @("build", $projectPath, "-c", "Nomad")
 
 # Verify Build Artifacts
 if (-not (Test-Path "bin/PCVR/InfiniteImbueFramework/InfiniteImbueFramework.dll")) { Write-Error "PCVR Build Failed: DLL not found." }
